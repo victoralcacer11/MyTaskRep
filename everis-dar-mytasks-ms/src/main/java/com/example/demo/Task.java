@@ -29,11 +29,18 @@ public class Task{
 	/**
 	 * Constructor basic Task
 	 */
-	public Task(Long ID, String description, String state) {
+	public Task( String description, String state) {
 		
-		this.ID = ID;
 		this.setDescription(description) ;
 		this.setState(state) ;
+	}
+	
+	/**
+	 * Task getter
+	 * @return description
+	 */
+	  public Long getID() {
+		 return ID;
 	}
 	
 	/**
@@ -52,6 +59,13 @@ public class Task{
 		return state;
 	}
 	
+	/**
+	 * Set ID to new task
+	 * @param ID new value
+	 */
+	 public void setID(Long ID) {
+		    this.ID = ID;
+	}
 	
 	/**
 	 * Set description to new task
