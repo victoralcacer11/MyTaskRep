@@ -31,8 +31,8 @@ public class Task{
 	 */
 	public Task( String description, String state) {
 		
-		this.setDescription(description) ;
-		this.setState(state) ;
+		this.description = description ;
+		this.state = state ;
 	}
 	
 	/**
