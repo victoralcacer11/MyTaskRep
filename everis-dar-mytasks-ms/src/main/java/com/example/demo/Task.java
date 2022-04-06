@@ -35,19 +35,37 @@ public class Task{
 		this.setDescription(description) ;
 		this.setState(state) ;
 	}
-
+	
+	/**
+	 * Task getter
+	 * @return description
+	 */
 	public String getDescription() {
 		return description;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
+	
+	/**
+	 * Task getter
+	 * @return state
+	 */
 	public String getState() {
 		return state;
 	}
+	
+	
+	/**
+	 * Set description to new task
+	 * @param description new value
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
 
+	/**
+	 * Set state to new task 
+	 * @param state new value
+	 */
 	public void setState(String state) {
 		this.state = state;
 	}
