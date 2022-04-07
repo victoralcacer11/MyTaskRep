@@ -12,23 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 @RestController
 public class TaskController{
 	
 	@Autowired
 	private TaskRepository taskRepository; 
 	
-/**
- * method of GetMapping to see all the tasks in the BBDD
- * @return List<Task> 
- */
+	/**
+	 * method of GetMapping to see all the tasks in the BBDD
+	 * @return List<Task> 
+	 */
 	@GetMapping("/tasks")
 	public List<Task> getTask(){
-		
-		return (List<Task>) this.taskRepository.findAll();
-		
-		
+		return (List<Task>) this.taskRepository.findAll();	
 	}
 	
 	/**
@@ -38,9 +34,7 @@ public class TaskController{
 	 */
 	@GetMapping("/taskId")
 	public Optional<Task> getTaskId(@RequestParam (value="id") Long id){
-		
 		return this.taskRepository.findById(id);
-		
 	}
 	
 	/**
@@ -50,11 +44,10 @@ public class TaskController{
 	 */
 	@GetMapping("/tasksEnd")
 	public List<Task> getTaskEnd(){
-			
 		List<Task> tasks = (List<Task>)this.taskRepository.findAll();
 		List<Task> tasksEnd = new ArrayList<Task>();
+		
 		for (int i =0 ; i < tasks.size() ; i++ ) {
-			
 			if(tasks.get(i).getState().equalsIgnoreCase("Finalizada")) {
 				tasksEnd.add(tasks.get(i));
 			}
@@ -70,9 +63,9 @@ public class TaskController{
 	 */
 	@PostMapping("/tasks")
 	public Task addTask(@RequestBody Task task) {
-		
 		return this.taskRepository.save(task);
 	}
+	
 	/**
 	 * Method to update the state of existing Task
 	 * @param ID to selec the task to update
@@ -85,9 +78,7 @@ public class TaskController{
 		modTask.setState(task.getState());
 		return this.taskRepository.save(modTask);
 	}
-	
-
-	
+		
 	/**
 	 * Method to delete a task
 	 * in the body of DELETE REST it needs the id the other no necesary
@@ -97,8 +88,5 @@ public class TaskController{
 	public void deleteTask(@RequestBody Task task) {
 		this.taskRepository.delete(task);
 	}
-	
-
-
 
 }
