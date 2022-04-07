@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -26,4 +27,21 @@ public class TaskController{
 		
 	}
 	
+	/**
+	 * method of GetMapping to see end tasks
+	 * @return List<Task> 
+	 */
+		@GetMapping("/tasks")
+		public List<Task> getTaskEnd(){
+			
+			List<Task> tasks = (List<Task>)this.taskRepository.findAll();
+			
+			
+			
+			 return tasks;
+		}
+
+
+
+
 }
