@@ -3,6 +3,7 @@ package com.example.demo;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,7 +43,7 @@ public class TaskController{
 	}
 	
 	/**
-	 * Metod for see the complet tasks
+	 * Method for see the complet tasks
 	 * equalsIgnoreCase("Finalizada") accept status Finalizada and finalizada and FINALIZADA
 	 * @return List<Task> tasksEnd
 	 */
@@ -70,7 +71,17 @@ public class TaskController{
 	public Task addTask(@RequestBody Task task) {
 		return this.taskRepository.save(task);
 	}
-
+	
+	/**
+	 * Method to delete a task
+	 * in the body of DELETE REST it needs the id the other no necesary
+	 * @param task
+	 */
+	@DeleteMapping("/tasks")
+	public void deleteTask(@RequestBody Task task) {
+		this.taskRepository.delete(task);
+	}
+	
 
 
 
