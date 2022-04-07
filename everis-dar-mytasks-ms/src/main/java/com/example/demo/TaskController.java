@@ -15,8 +15,8 @@ public class TaskController{
 	private TaskRepository taskRepository; 
 	
 /**
- * 
- * @return 
+ * method of GetMapping to see all the tasks in the BBDD
+ * @return List<Task> 
  */
 	@GetMapping("/tasks")
 	public List<Task> getTask(){
