@@ -27,6 +27,11 @@ public class TaskController{
 		
 	}
 	
+	/**
+	 * method of GetMapping to see a task
+	 * @param id
+	 * @return de task with this param
+	 */
 	@GetMapping("/taskId")
 	public Optional<Task> getTaskId(@RequestParam (value="id") Long id){
 		
@@ -34,20 +39,25 @@ public class TaskController{
 		
 	}
 	
-	
 	/**
-	 * method of GetMapping to see end tasks
-	 * @return List<Task> 
+	 * Metod for see the complet tasks
+	 * equalsIgnoreCase("Finalizada") accept status Finalizada and finalizada and FINALIZADA
+	 * @return List<Task> tasksEnd
 	 */
-//		@GetMapping("/tasks")
-//		public List<Task> getTaskEnd(){
-//			
-//			List<Task> tasks = (List<Task>)this.taskRepository.findAll();
-//			
-//			
-//			
-//			 return tasks;
-//		}
+	@GetMapping("/tasksEnd")
+	public List<Task> getTaskEnd(){
+			
+		List<Task> tasks = (List<Task>)this.taskRepository.findAll();
+		List<Task> tasksEnd = new ArrayList<Task>();
+		for (int i =0 ; i < tasks.size() ; i++ ) {
+			
+			if(tasks.get(i).getState().equalsIgnoreCase("Finalizada")) {
+				tasksEnd.add(tasks.get(i));
+			}
+		}	
+			
+	    return tasksEnd;
+	}
 
 
 
