@@ -27,19 +27,27 @@ public class TaskController{
 		
 	}
 	
+	@GetMapping("/taskId")
+	public Optional<Task> getTaskId(@RequestParam (value="id") Long id){
+		
+		return this.taskRepository.findById(id);
+		
+	}
+	
+	
 	/**
 	 * method of GetMapping to see end tasks
 	 * @return List<Task> 
 	 */
-		@GetMapping("/tasks")
-		public List<Task> getTaskEnd(){
-			
-			List<Task> tasks = (List<Task>)this.taskRepository.findAll();
-			
-			
-			
-			 return tasks;
-		}
+//		@GetMapping("/tasks")
+//		public List<Task> getTaskEnd(){
+//			
+//			List<Task> tasks = (List<Task>)this.taskRepository.findAll();
+//			
+//			
+//			
+//			 return tasks;
+//		}
 
 
 
