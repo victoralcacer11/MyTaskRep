@@ -29,8 +29,21 @@ public class Task{
 	/**
 	 * Constructor basic Task
 	 */
-	public Task( String description, String state) {
+	public Task() {
 		
+		super();
+		this.description = "";
+		this.state = "" ;
+	}
+	
+	
+	/**
+	 * Constructor with parameters
+	 */
+	public Task(final Long ID ,final String description,final String state) {
+		
+		super();
+		this.ID = ID;
 		this.description = description ;
 		this.state = state ;
 	}
@@ -40,7 +53,7 @@ public class Task{
 	 * @return description
 	 */
 	  public Long getID() {
-		 return ID;
+		 return this.ID;
 	}
 	
 	/**
@@ -48,7 +61,7 @@ public class Task{
 	 * @return description
 	 */
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 	
 	/**
@@ -56,7 +69,7 @@ public class Task{
 	 * @return state
 	 */
 	public String getState() {
-		return state;
+		return this.state;
 	}
 	
 	/**

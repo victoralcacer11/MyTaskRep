@@ -20,6 +20,7 @@ public class TaskController{
  */
 	@GetMapping("/tasks")
 	public List<Task> getTask(){
+		
 		return (List<Task>) this.taskRepository.findAll();
 		
 		
