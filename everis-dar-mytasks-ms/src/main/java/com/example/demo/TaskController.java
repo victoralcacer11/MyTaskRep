@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -72,10 +73,15 @@ public class TaskController{
 		
 		return this.taskRepository.save(task);
 	}
-	
-	@PostMapping("/tasks")
-	public Task updateTask(@RequestParam (value="id")Long id, @RequestBody Task task){
-		Task modTask = this.taskRepository.findById(id).get();
+	/**
+	 * Method to update the state of existing Task
+	 * @param ID to selec the task to update
+	 * @param task body of the new values
+	 * @return the task with only update the state
+	 */
+	@PutMapping("/tasks")
+	public Task updateTask(@RequestParam (value="ID")Long ID, @RequestBody Task task){
+		Task modTask = taskRepository.findById(ID).get();
 		modTask.setState(task.getState());
 		return this.taskRepository.save(modTask);
 	}
