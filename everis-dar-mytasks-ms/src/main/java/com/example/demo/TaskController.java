@@ -69,8 +69,18 @@ public class TaskController{
 	 */
 	@PostMapping("/tasks")
 	public Task addTask(@RequestBody Task task) {
+		
 		return this.taskRepository.save(task);
 	}
+	
+	@PostMapping("/tasks")
+	public Task updateTask(@RequestParam (value="id")Long id, @RequestBody Task task){
+		Task modTask = this.taskRepository.findById(id).get();
+		modTask.setState(task.getState());
+		return this.taskRepository.save(modTask);
+	}
+	
+
 	
 	/**
 	 * Method to delete a task
